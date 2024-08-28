@@ -48,7 +48,7 @@ class MorepanelController extends Controller
     }
 
     // 自动登陆
-    public function autologin(Request $request,$panel,$user){
+    public function panelautologin(Request $request,$panel,$user){
         $model = "\App\\".ucfirst($panel)."\Models\Administrator";
         $status = Config::get('admin.multi_app.'.$panel);
         if($status === true){

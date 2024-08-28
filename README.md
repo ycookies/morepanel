@@ -18,12 +18,12 @@
  - PHP >= 7.1.0
  - Laravel 5.5.0 ~ 9.*
  - Fileinfo PHP Extension
+ - dcat-admin 2.2.2
  
-
 
 ### 安装
 ```bash
-composer require --dev ycookies/morepanel
+composer require  ycookies/morepanel --dev
 ```
 
 ### 使用前 注意事项
