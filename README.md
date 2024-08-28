@@ -9,6 +9,11 @@
 2.在管理页面，可以给管理用户重置登陆密码。
 3.在管理页面，可以免密登陆每个管理账号。
 
+### 截图
+![管理列表](resources/assets/image.png)
+![创建管理面板](resources/assets/image2.png)
+![管理面板用户](resources/assets/image3.png)
+![重置面板用户登陆密码](resources/assets/image4.png)
 ### 环境
  - PHP >= 7.1.0
  - Laravel 5.5.0 ~ 9.*
