@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://cdn.learnku.com/uploads/images/202009/27/38389/WFQxJ7qZ1k.png!large" height="80"> 
+    <img src="resources/assets/WFQxJ7qZ1k.png" height="80"> 
 </div>
 <br>
 
@@ -43,6 +43,3 @@ composer require --dev ycookies/morepanel
 ```php
 Route::get('/autologin/{panel}/{user}',\Dcat\Admin\Morepanel\Http\Controllers\MorepanelController::class.'@autologin')->name('panelautologin')->middleware('signed');
 ```
-
-
-
