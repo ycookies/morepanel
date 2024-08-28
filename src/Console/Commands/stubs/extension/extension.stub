@@ -1,0 +1,46 @@
+<?php
+
+namespace {namespace};
+
+use Dcat\Admin\Extend\ServiceProvider;
+use Dcat\Admin\Admin;
+
+class {className}ServiceProvider extends ServiceProvider
+{
+	{property}
+	protected $css = [
+		'css/index.css',
+	];
+
+	// 定义菜单
+    /*protected $menu = [
+        [
+            'title' => '知识库文档',
+            'uri'   => 'docsify/list',
+            'icon'  => 'feather icon-book',
+        ]
+    ];*/
+
+    // 路由白名单
+    protected $exceptRoutes = [
+        'auth' => []
+    ];
+
+	public function register()
+	{
+		//
+	}
+
+	public function init()
+	{
+		parent::init();
+
+		//
+		{registerTheme}
+	}
+
+	public function settingForm()
+	{
+		return new Setting($this);
+	}
+}

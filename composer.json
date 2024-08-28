@@ -1,0 +1,32 @@
+{
+    "name": "ycookies/morepanel",
+    "alias": "多端后台生成器",
+    "description": "多端后台生成器",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension"],
+    "homepage": "https://github.com/ycookies/morepanel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "杨光",
+            "email": "3664839@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dcat\\Admin\\Morepanel\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "Dcat\\Admin\\Morepanel\\MorepanelServiceProvider",
+        "laravel": {
+            "providers": [
+                "Dcat\\Admin\\Morepanel\\MorepanelServiceProvider"
+            ]
+        }
+    }
+}

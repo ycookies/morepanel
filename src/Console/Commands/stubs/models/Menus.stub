@@ -1,0 +1,10 @@
+<?php
+
+namespace App\DummyNamespace\Models;
+
+use Dcat\Admin\Models\Menu;
+
+class Menus extends Menu
+{
+    protected $table = 'DummyApp_menu';
+}

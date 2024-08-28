@@ -1,0 +1,10 @@
+<?php
+
+namespace App\DummyNamespace\Models;
+
+use Dcat\Admin\Models\Permission;
+
+class Permissions extends Permission
+{
+    protected $table = 'DummyApp_permission';
+}

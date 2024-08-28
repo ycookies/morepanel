@@ -1,0 +1,320 @@
+CREATE TABLE `DummyApp_extensions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `is_enabled` tinyint(4) NOT NULL DEFAULT '0',
+  `options` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_extension_histories`
+--
+
+CREATE TABLE `DummyApp_extension_histories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT '1',
+  `version` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `detail` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_menu`
+--
+
+CREATE TABLE `DummyApp_menu` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `parent_id` bigint(20) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uri` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `extension` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `show` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 转存表中的数据 `DummyApp_menu`
+--
+
+INSERT INTO `DummyApp_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `extension`, `show`, `created_at`, `updated_at`) VALUES
+(1, 0, 1, 'Index', 'feather icon-bar-chart-2', '/', '', 1, '2022-12-19 18:19:39', NULL),
+(2, 0, 2, 'Admin', 'feather icon-settings', '', '', 1, '2022-12-19 18:19:39', NULL),
+(3, 2, 3, 'Users', '', 'auth/users', '', 1, '2022-12-19 18:19:39', NULL),
+(4, 2, 4, 'Roles', '', 'auth/roles', '', 1, '2022-12-19 18:19:39', NULL),
+(5, 2, 5, 'Permission', '', 'auth/permissions', '', 1, '2022-12-19 18:19:39', NULL),
+(6, 2, 6, 'Menu', '', 'auth/menu', '', 1, '2022-12-19 18:19:39', NULL),
+(7, 2, 7, 'Extensions', '', 'auth/extensions', '', 1, '2022-12-19 18:19:39', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_permissions`
+--
+
+CREATE TABLE `DummyApp_permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `http_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `http_path` text COLLATE utf8mb4_unicode_ci,
+  `order` int(11) NOT NULL DEFAULT '0',
+  `parent_id` bigint(20) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 转存表中的数据 `DummyApp_permissions`
+--
+
+INSERT INTO `DummyApp_permissions` (`id`, `name`, `slug`, `http_method`, `http_path`, `order`, `parent_id`, `created_at`, `updated_at`) VALUES
+(1, 'Auth management', 'auth-management', '', '', 1, 0, '2022-12-19 18:19:39', NULL),
+(2, 'Users', 'users', '', '/auth/users*', 2, 1, '2022-12-19 18:19:39', NULL),
+(3, 'Roles', 'roles', '', '/auth/roles*', 3, 1, '2022-12-19 18:19:39', NULL),
+(4, 'Permissions', 'permissions', '', '/auth/permissions*', 4, 1, '2022-12-19 18:19:39', NULL),
+(5, 'Menu', 'menu', '', '/auth/menu*', 5, 1, '2022-12-19 18:19:39', NULL),
+(6, 'Extension', 'extension', '', '/auth/extensions*', 6, 1, '2022-12-19 18:19:39', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_permission_menu`
+--
+
+CREATE TABLE `DummyApp_permission_menu` (
+  `permission_id` bigint(20) NOT NULL,
+  `menu_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_roles`
+--
+
+CREATE TABLE `DummyApp_roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 转存表中的数据 `DummyApp_roles`
+--
+
+INSERT INTO `DummyApp_roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Administrator', 'administrator', '2022-12-19 18:19:39', '2022-12-19 18:19:39');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_role_menu`
+--
+
+CREATE TABLE `DummyApp_role_menu` (
+  `role_id` bigint(20) NOT NULL,
+  `menu_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_role_permissions`
+--
+
+CREATE TABLE `DummyApp_role_permissions` (
+  `role_id` bigint(20) NOT NULL,
+  `permission_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_role_users`
+--
+
+CREATE TABLE `DummyApp_role_users` (
+  `role_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 转存表中的数据 `DummyApp_role_users`
+--
+
+INSERT INTO `DummyApp_role_users` (`role_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2022-12-19 18:19:39', '2022-12-19 18:19:39');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_settings`
+--
+
+CREATE TABLE `DummyApp_settings` (
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `DummyApp_users`
+--
+
+CREATE TABLE `DummyApp_users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 转存表中的数据 `DummyApp_users`
+--
+
+INSERT INTO `DummyApp_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '$2y$10$EaD6zqQisQjCsFFl6iz/Bebq0M4/DxFKwavQqlh/b3U0xvZil2iTK', 'Administrator', NULL, NULL, '2022-12-19 18:19:39', '2022-12-19 18:19:39');
+
+--
+-- 转储表的索引
+--
+
+--
+-- 表的索引 `DummyApp_extensions`
+--
+ALTER TABLE `DummyApp_extensions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `DummyApp_extensions_name_unique` (`name`);
+
+--
+-- 表的索引 `DummyApp_extension_histories`
+--
+ALTER TABLE `DummyApp_extension_histories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `DummyApp_extension_histories_name_index` (`name`);
+
+--
+-- 表的索引 `DummyApp_menu`
+--
+ALTER TABLE `DummyApp_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 表的索引 `DummyApp_permissions`
+--
+ALTER TABLE `DummyApp_permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `DummyApp_permissions_slug_unique` (`slug`);
+
+--
+-- 表的索引 `DummyApp_permission_menu`
+--
+ALTER TABLE `DummyApp_permission_menu`
+  ADD UNIQUE KEY `DummyApp_permission_menu_permission_id_menu_id_unique` (`permission_id`,`menu_id`);
+
+--
+-- 表的索引 `DummyApp_roles`
+--
+ALTER TABLE `DummyApp_roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `DummyApp_roles_slug_unique` (`slug`);
+
+--
+-- 表的索引 `DummyApp_role_menu`
+--
+ALTER TABLE `DummyApp_role_menu`
+  ADD UNIQUE KEY `DummyApp_role_menu_role_id_menu_id_unique` (`role_id`,`menu_id`);
+
+--
+-- 表的索引 `DummyApp_role_permissions`
+--
+ALTER TABLE `DummyApp_role_permissions`
+  ADD UNIQUE KEY `DummyApp_role_permissions_role_id_permission_id_unique` (`role_id`,`permission_id`);
+
+--
+-- 表的索引 `DummyApp_role_users`
+--
+ALTER TABLE `DummyApp_role_users`
+  ADD UNIQUE KEY `DummyApp_role_users_role_id_user_id_unique` (`role_id`,`user_id`);
+
+--
+-- 表的索引 `DummyApp_settings`
+--
+ALTER TABLE `DummyApp_settings`
+  ADD PRIMARY KEY (`slug`);
+
+--
+-- 表的索引 `DummyApp_users`
+--
+ALTER TABLE `DummyApp_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `DummyApp_users_username_unique` (`username`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+--
+-- 使用表AUTO_INCREMENT `DummyApp_extensions`
+--
+ALTER TABLE `DummyApp_extensions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用表AUTO_INCREMENT `DummyApp_extension_histories`
+--
+ALTER TABLE `DummyApp_extension_histories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用表AUTO_INCREMENT `DummyApp_menu`
+--
+ALTER TABLE `DummyApp_menu`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- 使用表AUTO_INCREMENT `DummyApp_permissions`
+--
+ALTER TABLE `DummyApp_permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- 使用表AUTO_INCREMENT `DummyApp_roles`
+--
+ALTER TABLE `DummyApp_roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- 使用表AUTO_INCREMENT `DummyApp_users`
+--
+ALTER TABLE `DummyApp_users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;

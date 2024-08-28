@@ -1,0 +1,10 @@
+<?php
+
+namespace App\DummyNamespace\Models;
+
+use Dcat\Admin\Models\Role;
+
+class Roles extends Role
+{
+    protected $table = 'DummyApp_roles';
+}
