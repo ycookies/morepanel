@@ -18,11 +18,19 @@
  - PHP >= 7.1.0
  - Laravel 5.5.0 ~ 9.*
  - Fileinfo PHP Extension
+ 
+
 
 ### 安装
 ```bash
 composer require --dev ycookies/morepanel
 ```
+
+### 使用前 注意事项
+
+> 请确保框架 `app` 目录下有创建文件夹的权限  
+> 请确保框架 `config` 目录下有创建文件的权限
+
 
 ### 使用
 > 1.让新创建的面板，可以正常使用，需要在 `config/admin.php`中,添加如下代码。
@@ -43,3 +51,7 @@ composer require --dev ycookies/morepanel
 ```php
 Route::get('/autologin/{panel}/{user}',\Dcat\Admin\Morepanel\Http\Controllers\MorepanelController::class.'@autologin')->name('panelautologin')->middleware('signed');
 ```
+
+
+
+
