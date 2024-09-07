@@ -53,15 +53,20 @@ class PanelCommand extends InstallCommand
         $info = MorepanelList::where(['panel_code'=> $app_name])->first();
         $panel_name = '速码邦';
         $panel_logo = '/vendor/dcat-admin/images/logo.png';
+        $panel_color = 'default';
+        $panel_brief = '';
         if($info){
             $panel_name = $info->panel_name;
             $panel_logo = $info->panel_logo;
+            $panel_color = $info->panel_color;
+            $panel_brief = $info->panel_brief;
+
         }
         $files->put(
             $config = config_path($app_name.'.php'),
             str_replace(
-                ['DummyNamespace', 'DummyApp','AppName','AppLogo'],
-                [$namespace, $app_name,$panel_name,$panel_logo],
+                ['DummyNamespace', 'DummyApp','AppName','AppLogo','AppColor','AppBrief'],
+                [$namespace, $app_name,$panel_name,$panel_logo,$panel_color,$panel_brief],
                 $files->get(__DIR__.'/stubs/config.stub')
             )
         );

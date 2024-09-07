@@ -19,7 +19,7 @@ return [
     | dcat-admin description
     |--------------------------------------------------------------------------
     */
-    'description' => '专注于Laravel项目的极速开发',
+    'description' => 'AppBrief',
 
     /*
     |--------------------------------------------------------------------------
@@ -335,7 +335,7 @@ return [
     */
     'layout' => [
         // default, blue, blue-light, green
-        'color' => 'default',
+        'color' => 'AppColor',
 
 		// sidebar-separate
         'body_class' => [],

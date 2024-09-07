@@ -12,7 +12,6 @@ use Dcat\Admin\Morepanel\Http\Controllers\Renderable\PanelUserTable;
 use Dcat\Admin\Morepanel\Models\MorepanelList;
 use Dcat\Admin\Show;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\File;
 
 class MorepanelListController extends AdminController {
     /**
@@ -49,7 +48,7 @@ class MorepanelListController extends AdminController {
             $grid->setActionClass(Grid\Displayers\Actions::class);
             $grid->actions(function ($actions) {
                 // 去掉删除
-                //$actions->disableDelete();
+                $actions->disableDelete();
                 // 去掉编辑
                 $actions->disableEdit();
                 $actions->disableView();
@@ -100,8 +99,18 @@ class MorepanelListController extends AdminController {
             $form->display('id');
             $form->text('panel_code', '后台空间名')->help('例:seller')->required();
             $form->text('panel_name', '后台中文名')->help('例:商家端')->required();
+            $form->text('panel_brief', '简介说明')->help('例:专注于Laravel项目的极速开发');
+            $form->radio('panel_color', '后台风格颜色')->options([
+                'default'    => 'default',
+                'blue'       => 'blue',
+                'blue-light' => 'blue-light',
+                'green'      => 'green'
+            ])->default('default')->required();
             $form->image('panel_logo', '后台logo')->default('/vendor/dcat-admin/images/logo.png')->required();
-            $form->editor('panel_brief', '简介说明');
+            $form->image('panel_login_bg', '后台登陆页背影图')
+                ->default('/vendor/dcat-admin/images/login-bg.jpg')
+                ->help('尺寸:1280*720')->required();
+
             $form->switch('panel_status', '是否启用')->default(true);
             $form->saving(function (Form $form) {
                 // 判断是否是新增操作
@@ -110,10 +119,13 @@ class MorepanelListController extends AdminController {
                     if ($count) {
                         return $form->response()->error('后台空间名 已经存在.');
                     }
-                    /*$directory = app_path('Seller'); // 要检查的目录路径
+                    $form->panel_code = lcfirst($form->panel_code);
+                    $app_name = Ucfirst($form->panel_code);
+                    //return $form->response()->error('暂时性关闭创建');
+                    $directory = app_path($app_name); // 要检查的目录路径
                     $directory1 = config_path(); // 要检查的目录路径
 
-                    // 检查配置后台文件夹有无生成权限
+                    /*// 检查配置后台文件夹有无生成权限
                     if (File::isReadable($directory) && File::isWritable($directory)) {
 
                     } else {
@@ -139,14 +151,7 @@ class MorepanelListController extends AdminController {
                     Artisan::call('panel:app', ['name' => ucfirst($form->panel_code)]);
                     //Artisan::call('config:clear');
                 }
-
-                // 修改操作
             });
-            /*$form->text('panel_theme');
-            $form->text('panel_menu_style');
-            $form->text('panel_login_bg');
-            $form->display('created_at');
-            $form->display('updated_at');*/
         });
     }
 }

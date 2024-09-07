@@ -6,10 +6,12 @@ use Dcat\Admin\Extend\ServiceProvider;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Morepanel\Console\Commands\PanelCommand;
 
+
 class MorepanelServiceProvider extends ServiceProvider
 {
 	protected $js = [
         'js/index.js',
+
     ];
 	protected $css = [
 		'css/index.css',
@@ -38,8 +40,11 @@ class MorepanelServiceProvider extends ServiceProvider
         ]);
 	}
 
+
 	public function init()
 	{
+
+
 		parent::init();
 
 		//

@@ -49,12 +49,13 @@ CREATE TABLE `DummyApp_menu` (
 
 INSERT INTO `DummyApp_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `extension`, `show`, `created_at`, `updated_at`) VALUES
 (1, 0, 1, 'Index', 'feather icon-bar-chart-2', '/', '', 1, '2022-12-19 18:19:39', NULL),
-(2, 0, 2, 'Admin', 'feather icon-settings', '', '', 1, '2022-12-19 18:19:39', NULL),
-(3, 2, 3, 'Users', '', 'auth/users', '', 1, '2022-12-19 18:19:39', NULL),
-(4, 2, 4, 'Roles', '', 'auth/roles', '', 1, '2022-12-19 18:19:39', NULL),
-(5, 2, 5, 'Permission', '', 'auth/permissions', '', 1, '2022-12-19 18:19:39', NULL),
-(6, 2, 6, 'Menu', '', 'auth/menu', '', 1, '2022-12-19 18:19:39', NULL),
-(7, 2, 7, 'Extensions', '', 'auth/extensions', '', 1, '2022-12-19 18:19:39', NULL);
+(2, 1, 2, '概况', 'fa fa-tachometer', '/', '', 1, '2022-12-19 18:19:39', NULL),
+(3, 0, 3, 'Admin', 'feather icon-settings', '', '', 1, '2022-12-19 18:19:39', NULL),
+(4, 3, 4, 'Users', '', 'auth/users', '', 1, '2022-12-19 18:19:39', NULL),
+(5, 3, 5, 'Roles', '', 'auth/roles', '', 1, '2022-12-19 18:19:39', NULL),
+(6, 3, 6, 'Permission', '', 'auth/permissions', '', 1, '2022-12-19 18:19:39', NULL),
+(7, 3, 7, 'Menu', '', 'auth/menu', '', 1, '2022-12-19 18:19:39', NULL),
+(8, 3, 8, 'Extensions', '', 'auth/extensions', '', 1, '2022-12-19 18:19:39', NULL);
 
 -- --------------------------------------------------------
 
