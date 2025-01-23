@@ -1,5 +1,5 @@
 {
-    "name": "ycookies/morepanel",
+    "name": "zhong0060/morepanel",
     "alias": "多管理面板生成器",
     "description": "一键生成管理面板,支持Admin免密登陆其它管理面板,每个管理面板自身独立(管理员，权限，角色),Saas系统最方便的实现",
     "type": "library",
